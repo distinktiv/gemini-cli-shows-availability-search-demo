@@ -1,1 +1,1 @@
-# gemini-cli-shows-availability-search-demo
+# gemini cli shows availability search demo
