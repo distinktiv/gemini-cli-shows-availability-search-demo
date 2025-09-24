@@ -10,6 +10,7 @@ export interface MediaInfo {
   description: string;
   poster: string;
   platforms: StreamingPlatform[];
+  seasons?: { season: number; rating: number }[];
 }
 
 // Mock streaming platforms data for Canada
@@ -80,7 +81,13 @@ export const mockMediaDatabase: Record<string, MediaInfo> = {
     rating: "TV-14",
     description: "A group of kids in a small town uncover supernatural mysteries and government conspiracies.",
     poster: "https://images.unsplash.com/photo-1579353174740-9e4e39428d6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJhbmdlciUyMHRoaW5ncyUyMHBvc3RlciUyMG5ldGZsaXh8ZW58MXx8fHwxNzU4NTk4MzQxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    platforms: [mockStreamingPlatforms[0]]
+    platforms: [mockStreamingPlatforms[0]],
+    seasons: [
+      { season: 1, rating: 8.7 },
+      { season: 2, rating: 8.2 },
+      { season: 3, rating: 8.5 },
+      { season: 4, rating: 9.1 },
+    ],
   },
   "the office": {
     title: "The Office",
@@ -131,6 +138,66 @@ export const mockMediaDatabase: Record<string, MediaInfo> = {
     description: "A high school chemistry teacher turned methamphetamine manufacturer partners with a former student.",
     poster: "https://images.unsplash.com/photo-1644589104137-19a8b9f55aba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmVha2luZyUyMGJhZCUyMHR2JTIwc2VyaWVzJTIwcG9zdGVyfGVufDF8fHx8MTc1ODU5ODM1NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     platforms: mockStreamingPlatforms.slice(0, 3)
+  },
+  "curb your enthusiasm": {
+    title: "Curb Your Enthusiasm",
+    year: "2000-2024",
+    type: "series",
+    genre: ["Comedy"],
+    rating: "TV-MA",
+    description: "The life and times of Larry David and the predicaments he gets himself into with his friends and complete strangers.",
+    poster: "https://images.unsplash.com/photo-1644589104137-19a8b9f55aba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmVha2luZyUyMGJhZCUyMHR2JTIwc2VyaWVzJTIwcG9zdGVyfGVufDF8fHx8MTc1ODU5ODM1NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[1]]
+  },
+  "gilmore girls": {
+    title: "Gilmore Girls",
+    year: "2000-2007",
+    type: "series",
+    genre: ["Comedy", "Drama"],
+    rating: "TV-PG",
+    description: "A dramedy centering around the relationship between a thirtysomething single mother and her teen daughter living in Stars Hollow, Connecticut.",
+    poster: "https://images.unsplash.com/photo-1644589104137-19a8b9f55aba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmVha2luZyUyMGJhZCUyMHR2JTIwc2VyaWVzJTIwcG9zdGVyfGVufDF8fHx8MTc1ODU5ODM1NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[0]]
+  },
+  "the sopranos": {
+    title: "The Sopranos",
+    year: "1999-2007",
+    type: "series",
+    genre: ["Crime", "Drama"],
+    rating: "TV-MA",
+    description: "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling.",
+    poster: "https://images.unsplash.com/photo-1644589104137-19a8b9f55aba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmVha2luZyUyMGJhZCUyMHR2JTIwc2VyaWVzJTIwcG9zdGVyfGVufDF8fHx8MTc1ODU5ODM1NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[1]]
+  },
+  "six feet under": {
+    title: "Six Feet Under",
+    year: "2001-2005",
+    type: "series",
+    genre: ["Drama", "Comedy"],
+    rating: "TV-MA",
+    description: "A dysfunctional family running an independent funeral home in Los Angeles.",
+    poster: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaXglMjBmZWV0JTIwdW5kZXIlMjB0diUyMHNlcmllcyUyMHNvZmElMjBwb3N0ZXJ8ZW58MXx8fHwxNzU4NTk4MzU1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[1]]
+  },
+  "24": {
+    title: "24",
+    year: "2001-2010",
+    type: "series",
+    genre: ["Action", "Drama", "Thriller"],
+    rating: "TV-14",
+    description: "Counter-terrorist agent Jack Bauer races against the clock to subvert terrorist plots and save his nation from disaster.",
+    poster: "https://images.unsplash.com/photo-1519125323398-675f0558da8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwxfHx8fDE3NTg1OTgzNTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[3]]
+  },
+  "the wire": {
+    title: "The Wire",
+    year: "2002-2008",
+    type: "series",
+    genre: ["Crime", "Drama", "Thriller"],
+    rating: "TV-MA",
+    description: "The Baltimore drug scene, as seen through the eyes of drug dealers and law enforcement officers.",
+    poster: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aGUlMjB3aXJlJTIwdHYlMjBzZXJpZXMlMjBwb3N0ZXJ8ZW58MXx8fHwxNzU4NTk4MzU1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    platforms: [mockStreamingPlatforms[1]]
   }
 };
 
